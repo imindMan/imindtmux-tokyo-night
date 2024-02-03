@@ -17,14 +17,13 @@ theme_disable_plugins=0
 ### Load Options
 border_style_active_pane="fg=${PALLETE[blue2]}"
 border_style_inactive_pane="fg=${PALLETE[bg_highlight]}"
-left_separator= ''
+left_separator=''
 right_separator=''
 
 # https://man.openbsd.org/OpenBSD-current/man1/tmux.1#acs
 window_with_activity_style="italics"
-window_status_bell_style= "bold"
+window_status_bell_style="bold"
 
-IFS=',' read -r -a plugins <<< "$(get_tmux_option "@theme-plugins" "datetime")"
 tmux set-option -g status-position top
 tmux set-option -g status-left-length 100
 tmux set-option -g status-right-length 100
@@ -52,9 +51,7 @@ tmux set-window-option -g window-status-current-format "$(generate_active_window
 ### Right side
 tmux set-option -g status-right ""
 
-# Check if plugins array is empty before proceeding
 plugin="datetime"
-tmux set-option -ga status-right "${plugin}"
 
 # shellcheck source=src/plugin/datetime.sh
 . "${CURRENT_DIR}/plugin/${plugin}.sh"
@@ -75,7 +72,7 @@ separator_icon_end="#[fg=${PALLETE[$accent_color]},bg=${PALLETE[$accent_color]}]
 plugin_output="#[fg=${PALLETE[bg]},bg=${PALLETE[$accent_color]}]$(load_plugin)#[none]"
 plugin_icon_output="${separator_icon_start}#[fg=${PALLETE[bg]},bg=${PALLETE[$accent_color]}]${plugin_icon}${separator_icon_end}"
 
-plugin_output_string="${plugin_icon_output}${plugin_output}${separator_end}"
+plugin_output_string="${plugin_icon_output}${plugin_output}"
 
 tmux set-option -ga status-right "$plugin_output_string"
 

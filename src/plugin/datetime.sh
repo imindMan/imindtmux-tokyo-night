@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 #
 # shellcheck disable=SC2005
-plugin_datetime_icon=$(get_tmux_option "@theme_plugin_datetime_icon" "")
-plugin_datetime_accent_color=$(get_tmux_option "@theme_plugin_datetime_accent_color" "magenta")
-plugin_datetime_accent_color_icon=$(get_tmux_option "@theme_plugin_datetime_accent_color_icon" "blue0")
-
-# https://man7.org/linux/man-pages/man1/date.1.html
-plugin_datetime_format=$(get_tmux_option "@theme_plugin_datetime_format" "%c")
+plugin_datetime_icon=""
+plugin_datetime_accent_color="magenta"
+plugin_datetime_accent_color_icon="blue0"
+plugin_datetime_format="%H:%M %d/%m/%Y"
 
 function load_plugin() {
   echo "${plugin_datetime_format}"
